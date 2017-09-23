@@ -13,6 +13,7 @@ export class Generator implements Dependency, Purchasable {
     public rate = 0;
     // public basePower: number = 0;
     public available = false;
+    public efficiency: number;
     constructor(public name: string = 'Unnamed Generator',
         public price: number = 0,
         public power: number = 0,

@@ -1,3 +1,4 @@
+import { DataService } from '../../core/data.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class CardComponent implements OnInit {
-
-  constructor() { }
+  public activePanel = 'generator';
+  constructor(public dataService: DataService) { }
 
   ngOnInit() {
+  }
+
+  toggle(panel) {
+    this.activePanel = panel;
   }
 
 }

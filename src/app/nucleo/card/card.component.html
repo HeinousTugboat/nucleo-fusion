@@ -1,3 +1,39 @@
-<p>
-  card works!
-</p>
+<header>
+    <div class="info">
+        <div class="symbol">
+            <h2>N</h2>
+            <span>xN: 0</span>
+        </div>
+    </div>
+    <div class="amounts">
+        <div class="current-rate">{{dataService.rate}}/s</div>
+        <ul class="isotopes">
+            <li>
+                <div>num</div>
+                <div>{{dataService.current | trunc}}</div>
+            </li>
+            <!-- <li *ngIf="dataService.efficient">
+                <div>eff</div>
+                <div>{{dataService.efficient.name}} - {{dataService.efficient.efficiency}}</div>
+            </li> -->
+        </ul>
+    </div>
+</header>
+<!-- <app-generator-panel [gens]="dataService.generators" [hidden]="activePanel !== 'generator'"></app-generator-panel> -->
+<!-- <app-upgrade-panel [upgs]="dataService.upgrades"></app-upgrade-panel> -->
+<!-- <upgrade-panel [upgs]="dataService.upgrades" [hidden]="activePanel !== 'upgrade'"></upgrade-panel> -->
+<section class="prestige"></section>
+<footer>
+    <div class="generators-link"
+        [class.active-tab]="activePanel === 'generator'"
+        (click)="toggle('generator')"
+        >Generators</div>
+    <div class="upgrades-link"
+        [class.active-tab]="activePanel === 'upgrade'"
+        (click)="toggle('upgrade')"
+        >Upgrades</div>
+    <div class="prestige-link"
+    [class.active-tab]="activePanel === 'prestige'"
+        (click)="toggle('prestige')"
+        >Prestige</div>
+</footer>

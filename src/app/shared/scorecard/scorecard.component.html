@@ -1,3 +1,11 @@
-<p>
-  scorecard works!
-</p>
+<div id="scorecard">
+    <div>Tick #{{updateService.tick}}</div>
+    <div>Next Best: {{dataService.findBest().name}}</div>
+    <div *ngIf="dataService.efficient">Most Eff: {{dataService.efficient.name}}</div>
+    <div>Total: {{dataService.total | trunc}}</div>
+    <div>Time: {{getElapsed()}}</div>
+    <!-- <div>Total {{dataService.total | trunc}}</div> -->
+    <!-- <div *ngIf="dataService.efficient">Eff {{dataService.efficient.name}} -- {{dataService.efficient.efficiency}} -->
+    <!-- <div>Current {{dataService.current | trunc}}</div> -->
+    <!-- <div>{{dataService.rate}}/sec</div> -->
+</div>
