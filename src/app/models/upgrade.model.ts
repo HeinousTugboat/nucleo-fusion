@@ -1,7 +1,7 @@
-import { Generator } from './generator.model';
+import { ParticleGenerator } from './particle-generator.model';
 import { Dependency, Purchasable } from './resource.interface';
 
-export function isUpgrade(g: Generator | Upgrade | Purchasable | Dependency): g is Upgrade {
+export function isUpgrade(g: ParticleGenerator | Upgrade | Purchasable | Dependency): g is Upgrade {
     return (<Upgrade>g).type === 'upgrade';
 }
 
@@ -20,11 +20,11 @@ export class Upgrade implements Dependency, Purchasable {
     public bought = false;
     constructor(
         public name: string = 'Unnamed Upgrade',
-        protected target: Generator,
+        protected target: ParticleGenerator,
         protected bonusFn: () => number = () => 1,
         protected price: number,
         protected deps: Dependency[],
-        protected source: Generator = target) {
+        protected source: ParticleGenerator = target) {
         target.upgrades.push(this);
         // console.log(Upgrade.list);
         Upgrade.list.set(this.name, this);
@@ -37,10 +37,10 @@ export class Upgrade implements Dependency, Purchasable {
             return Upgrade.list.get(json.name);
         }
         let upgrade: UpgradeType;
-        const target: Generator = Generator.list.get(json.target);
-        const source: Generator = Generator.list.get(json.source);
-        const deps: Generator[] = json.deps.map((name) => {
-            let gen: Dependency = Generator.list.get(name);
+        const target: ParticleGenerator = ParticleGenerator.list.get(json.target);
+        const source: ParticleGenerator = ParticleGenerator.list.get(json.source);
+        const deps: ParticleGenerator[] = json.deps.map((name) => {
+            let gen: Dependency = ParticleGenerator.list.get(name);
             if (gen === undefined) {
                 gen = Upgrade.list.get(name);
             }
@@ -127,7 +127,7 @@ export class Upgrade implements Dependency, Purchasable {
  */
 export class BasicUpgrade extends Upgrade {
     public upgradeType: 'multiplier';
-    constructor(protected target: Generator,
+    constructor(protected target: ParticleGenerator,
         private mult: number,
         protected price: number,
         protected deps: Dependency[]) {
@@ -149,7 +149,7 @@ export class BasicUpgrade extends Upgrade {
  */
 export class BoostUpgrade extends Upgrade {
     public upgradeType: 'boost';
-    constructor(protected target: Generator,
+    constructor(protected target: ParticleGenerator,
         private mult: number,
         private num: number,
         protected price: number,
@@ -174,10 +174,10 @@ export class BoostUpgrade extends Upgrade {
  */
 export class SynergyUpgrade extends Upgrade {
     public upgradeType: 'synergy';
-    constructor(protected target: Generator,
+    constructor(protected target: ParticleGenerator,
         protected price: number,
         protected deps: Dependency[],
-        protected source: Generator
+        protected source: ParticleGenerator
     ) {
         super(`${target.name}: ${source.name} Synergy`, target, () => 1 + (source.num / 100), price, deps, source);
     }

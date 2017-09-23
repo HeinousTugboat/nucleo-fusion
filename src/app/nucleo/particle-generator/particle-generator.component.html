@@ -1,0 +1,26 @@
+<li class="generator" [attr.disabled]="(gen.getNextCost() > dataService.current) ? true : null">
+  <div class="label">{{gen.name}}</div>
+  <div class="tag">
+      <div class="info">
+          <p class="cost">{{gen.getNextCost() | trunc}}</p>
+          <p class="data"><span class="individual-rate">{{gen.getBaseRate() | trunc}}/s</span> - <span class="total-rate">{{gen.getTotalRate() | trunc}}/s</span></p>
+      </div>
+      <ng-container *ngIf="gen.num;then buyButton else newButton">
+      </ng-container>
+      <!-- <button *ngIf="gen.num" class="number" [disabled]="(gen.getNextCost() > dataService.current)" (click)="purchase(gen)">{{gen.num}}</button> -->
+      <!-- <button *ngElse>Test</button> -->
+  </div>
+</li>
+
+<ng-template #buyButton>
+  <button class="number" (click)="purchase(gen)">
+      {{gen.num}}
+  </button>
+</ng-template>
+
+<ng-template #newButton>
+  <!-- TODO: Switch #newButton [disabled] to an isAvailable check -->
+  <button class="number" (click)="purchase(gen)">
+      -
+  </button>
+</ng-template>

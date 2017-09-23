@@ -1,12 +1,12 @@
 import { Upgrade, BasicUpgrade, BoostUpgrade, SynergyUpgrade, UpgradeType } from './upgrade.model';
 import { Dependency, Purchasable } from './resource.interface';
 
-export function isGen(g: Generator | Upgrade | Purchasable | Dependency): g is Generator {
-    return (<Generator>g).type === 'generator';
+export function isGen(g: ParticleGenerator | Upgrade | Purchasable | Dependency): g is ParticleGenerator {
+    return (<ParticleGenerator>g).type === 'generator';
 }
 
-export class Generator implements Dependency, Purchasable {
-    static list: Map<string, Generator> = new Map;
+export class ParticleGenerator implements Dependency, Purchasable {
+    static list: Map<string, ParticleGenerator> = new Map;
     public type: 'generator';
     public upgrades: UpgradeType[] = [];
     public num = 0;
@@ -18,24 +18,24 @@ export class Generator implements Dependency, Purchasable {
         public price: number = 0,
         public power: number = 0,
         public coeff: number,
-        public deps: Generator[]) {
+        public deps: ParticleGenerator[]) {
         if (deps.length === 0) {
             this.available = true;
         }
-        Generator.list.set(this.name, this);
+        ParticleGenerator.list.set(this.name, this);
     }
     static fromJSON(json) {
         if (!json) {
             return null;
         }
-        const deps: Generator[] = json.deps.map((name) => {
-            let gen: Dependency = Generator.list.get(name);
+        const deps: ParticleGenerator[] = json.deps.map((name) => {
+            let gen: Dependency = ParticleGenerator.list.get(name);
             if (gen === undefined) {
                 gen = Upgrade.list.get(name);
             }
             return gen;
         });
-        const gen = new Generator(json.name, json.price, json.power, json.coeff, deps);
+        const gen = new ParticleGenerator(json.name, json.price, json.power, json.coeff, deps);
         // FIXME: I'm about 98% certain this will break on Synergy Upgrades due to load order.
         json.upgrades.forEach(upgrade => Upgrade.fromJSON(upgrade));
         gen.num = json.num;

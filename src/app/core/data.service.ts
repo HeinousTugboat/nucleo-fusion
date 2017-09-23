@@ -1,4 +1,4 @@
-import { Generator } from '../models/generator.model';
+import { ParticleGenerator } from '../models/particle-generator.model';
 import { BasicUpgrade, BoostUpgrade, SynergyUpgrade, Upgrade, UpgradeType } from '../models/upgrade.model';
 import { Injectable } from '@angular/core';
 
@@ -6,13 +6,13 @@ const storageKey = 'nucleo-fusion';
 
 @Injectable()
 export class DataService {
-  public generators: Generator[];
+  public generators: ParticleGenerator[];
   public upgrades: UpgradeType[];
   public current: number;
   public total: number;
   public rate: number;
   private data;
-  public efficient: Generator = null;
+  public efficient: ParticleGenerator = null;
   public slush = [];
 
   constructor() {
@@ -25,7 +25,7 @@ export class DataService {
     // TODO: Rewrite to run buildGenerators every load and overwrite data from save
     this.generators = [];
     this.upgrades = [];
-    Generator.list.clear();
+    ParticleGenerator.list.clear();
     Upgrade.list.clear();
     this.current = 15;
     this.total = this.current;
@@ -33,7 +33,7 @@ export class DataService {
     this.efficient = null;
     if (data) {
       if (data.generators) {
-        data.generators.forEach((gen) => this.generators.push(Generator.fromJSON(gen)));
+        data.generators.forEach((gen) => this.generators.push(ParticleGenerator.fromJSON(gen)));
       }
       if (Upgrade.synergies) {
         Upgrade.processSynergies();
@@ -46,30 +46,30 @@ export class DataService {
     }
     // this.buildGenerators();
     this.save();
-    this.generators = [...Array.from(Generator.list.values())];
+    this.generators = [...Array.from(ParticleGenerator.list.values())];
     this.upgrades = [...Array.from(Upgrade.list.values())];
     this.upgrades.sort((a, b) => b.getCost() - a.getCost());
-    this.slush = [...Array.from(Generator.list.values()), ...Array.from(Upgrade.list.values())];
+    this.slush = [...Array.from(ParticleGenerator.list.values()), ...Array.from(Upgrade.list.values())];
     // console.log(this.slush);
     // console.log(this.generators);
     // console.log(this.upgrades);
   }
   findBest() {
     return this.slush.filter(item => item.checkAvailable())
-      .reduce((prev, curr) => prev.getValue(this.rate) < curr.getValue(this.rate) ? prev : curr)
+      .reduce((prev, curr) => prev.getValue(this.rate) < curr.getValue(this.rate) ? prev : curr);
   }
   buildGenerators() {
     const gens = [];
-    gens.push(new Generator('I', 1e1, 1, 1.12, []));
-    gens.push(new Generator('II', 1e2, 5, 1.12, [gens[0]]));
-    gens.push(new Generator('III', 1e3, 10, 1.12, [gens[1]]));
-    gens.push(new Generator('IV', 1e4, 25, 1.12, [gens[2]]));
-    gens.push(new Generator('V', 1e5, 50, 1.13, [gens[3]]));
-    gens.push(new Generator('VI', 1e6, 100, 1.14, [gens[4]]));
-    gens.push(new Generator('VII', 1e7, 250, 1.14, [gens[5]]));
-    gens.push(new Generator('VIII', 1e8, 500, 1.14, [gens[6]]));
-    gens.push(new Generator('IX', 1e9, 750, 1.15, [gens[7]]));
-    gens.push(new Generator('X', 1e10, 1000, 1.15, [gens[8]]));
+    gens.push(new ParticleGenerator('I', 1e1, 1, 1.12, []));
+    gens.push(new ParticleGenerator('II', 1e2, 5, 1.12, [gens[0]]));
+    gens.push(new ParticleGenerator('III', 1e3, 10, 1.12, [gens[1]]));
+    gens.push(new ParticleGenerator('IV', 1e4, 25, 1.12, [gens[2]]));
+    gens.push(new ParticleGenerator('V', 1e5, 50, 1.13, [gens[3]]));
+    gens.push(new ParticleGenerator('VI', 1e6, 100, 1.14, [gens[4]]));
+    gens.push(new ParticleGenerator('VII', 1e7, 250, 1.14, [gens[5]]));
+    gens.push(new ParticleGenerator('VIII', 1e8, 500, 1.14, [gens[6]]));
+    gens.push(new ParticleGenerator('IX', 1e9, 750, 1.15, [gens[7]]));
+    gens.push(new ParticleGenerator('X', 1e10, 1000, 1.15, [gens[8]]));
     gens.forEach(gen => {
       const basic = new BasicUpgrade(gen, 2, 1e5 * gen.power, [gen]);
       const basic2 = new BasicUpgrade(gen, 3, 1e7 * gen.power, [gen, basic/*, xBasic3x*/]);

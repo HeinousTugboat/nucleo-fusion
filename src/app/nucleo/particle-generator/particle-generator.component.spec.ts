@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GeneratorComponent } from './generator.component';
+import { ParticleGeneratorComponent } from './particle-generator.component';
 
 describe('GeneratorComponent', () => {
-  let component: GeneratorComponent;
-  let fixture: ComponentFixture<GeneratorComponent>;
+  let component: ParticleGeneratorComponent;
+  let fixture: ComponentFixture<ParticleGeneratorComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GeneratorComponent ]
+      declarations: [ ParticleGeneratorComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GeneratorComponent);
+    fixture = TestBed.createComponent(ParticleGeneratorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

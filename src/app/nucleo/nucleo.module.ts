@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { CardComponent } from './card/card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { GeneratorPanelComponent } from './generator-panel/generator-panel.component';
-import { GeneratorComponent } from './generator/generator.component';
+import { ParticleGeneratorPanelComponent } from './particle-generator-panel/particle-generator-panel.component';
+import { ParticleGeneratorComponent } from './particle-generator/particle-generator.component';
 import { UpgradePanelComponent } from './upgrade-panel/upgrade-panel.component';
 import { UpgradeComponent } from './upgrade/upgrade.component';
 
@@ -12,6 +12,13 @@ import { UpgradeComponent } from './upgrade/upgrade.component';
   imports: [
     SharedModule
   ],
-  declarations: [CardComponent, GeneratorComponent, UpgradeComponent, GeneratorPanelComponent, UpgradePanelComponent, DashboardComponent]
+  declarations: [
+    CardComponent,
+    ParticleGeneratorComponent,
+    UpgradeComponent,
+    ParticleGeneratorPanelComponent,
+    UpgradePanelComponent,
+    DashboardComponent
+  ]
 })
 export class NucleoModule { }
