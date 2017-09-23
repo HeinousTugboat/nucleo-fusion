@@ -1,3 +1,5 @@
-<p>
-  upgrade-panel works!
-</p>
+<ul class="new">
+  <ng-container *ngFor="let upg of upgs; let i=index;">
+      <app-upgrade *ngIf="upg.checkAvailable()" [upg]="upg"></app-upgrade>
+  </ng-container>
+</ul>

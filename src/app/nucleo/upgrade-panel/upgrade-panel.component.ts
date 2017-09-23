@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { UpgradeType } from '../../models/upgrade.model';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-upgrade-panel',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./upgrade-panel.component.css']
 })
 export class UpgradePanelComponent implements OnInit {
+  @Input() upgs: UpgradeType[];
 
   constructor() { }
 
