@@ -1,3 +1,9 @@
-<p>
-  upgrade works!
-</p>
+<li class="upgrade"
+*ngIf="(upg.getCost() < dataService.total/2)"
+(click)="purchase(upg)">
+<a [attr.disabled]="(upg.getCost() > dataService.current)?true:null">
+    <div class="label">{{upg.name}}</div>
+    <div class="cost">{{upg.getCost() | trunc}}</div>
+    <!-- <div>{{upg.getCost()}} - {{dataService.total/2 | trunc}}</div> -->
+</a>
+</li>
