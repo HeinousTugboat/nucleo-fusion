@@ -15,4 +15,30 @@
     <div class="label">Next Best:</div>
     <div>{{dataService.findBest().name}}</div>
   </li>
+  <li class="spacer"></li>
+  <li>
+    <div class="label">Exotic Prod:</div>
+    <div>{{dataService.exoticProd * 100 | trunc: 2}}%</div>
+  </li>
+  <li>
+    <div class="label"># Exotic:</div>
+    <div>{{dataService.currentExotic | trunc}}</div>
+  </li>
+  <li>
+    <div class="label">Earnable:</div>
+    <div>{{prestigeService.calcExotic(dataService.current) | trunc}}</div>
+  </li>
+  <li class="spacer"></li>
+  <li>
+    <div class="label">Void Prod:</div>
+    <div>{{dataService.voidProd * 100 | trunc: 2}}%</div>
+  </li>
+  <li>
+    <div class="label"># Void:</div>
+    <div>{{dataService.currentVoid}}</div>
+  </li>
+  <li>
+    <div class="label">Earnable:</div>
+    <div>{{dataService.earnableVoid | trunc}}</div>
+  </li>
 </ul>

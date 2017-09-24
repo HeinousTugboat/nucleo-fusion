@@ -1,3 +1,4 @@
+import { PrestigeService } from './prestige.service';
 import { ParticleGenerator } from '../models/particle-generator.model';
 import { BasicUpgrade, BoostUpgrade, SynergyUpgrade, Upgrade, UpgradeType } from '../models/upgrade.model';
 import { Injectable } from '@angular/core';
@@ -6,16 +7,24 @@ const storageKey = 'nucleo-fusion';
 
 @Injectable()
 export class DataService {
+  public sessionTime = Date.now();
+  public loadTime = Date.now();
+  public startTime = Date.now();
   public generators: ParticleGenerator[];
   public upgrades: UpgradeType[];
   public current: number;
   public total: number;
   public rate: number;
+  public currentExotic = 0;
+  public exoticProd = 1;
+  public currentVoid = 0;
+  public voidProd = 1;
+  public earnableVoid = 0;
   private data;
   public efficient: ParticleGenerator = null;
   public slush = [];
 
-  constructor() {
+  constructor(private prestigeService: PrestigeService) {
     this.data = localStorage.getItem(storageKey);
     this.initialize(JSON.parse(this.data));
     this.getTotalRate();
@@ -23,6 +32,7 @@ export class DataService {
 
   initialize(data) {
     // TODO: Rewrite to run buildGenerators every load and overwrite data from save
+    this.sessionTime = Date.now();
     this.generators = [];
     this.upgrades = [];
     ParticleGenerator.list.clear();
@@ -39,7 +49,14 @@ export class DataService {
         Upgrade.processSynergies();
       }
       this.current = data.current || 15;
+      this.currentExotic = this.currentExotic || data.currentExotic || 0;
+      this.exoticProd = this.prestigeService.calcExoticProd(this.currentExotic);
+      this.currentVoid = this.currentVoid || data.currentVoid || 0;
+      this.earnableVoid = this.prestigeService.calcVoid(this.currentExotic);
+      this.voidProd = this.currentVoid * 0.01;
       this.total = data.total || this.current;
+      this.startTime = data.startTime || this.startTime || Date.now();
+
     }
     if (this.generators.length === 0) {
       this.buildGenerators();
@@ -84,16 +101,6 @@ export class DataService {
         }
       });
     });
-    // this.generators = gens;
-    // this.upgrades = Array.from(Upgrade.list.values());
-
-    // let test = JSON.stringify(this.upgrades[0]);
-    // console.log(test);
-    // let temp = Upgrade.fromJSON(JSON.parse(test));
-    // console.log(this.upgrades[0].name);
-    // console.log(temp.name);
-    // console.log(Upgrade.list.has(this.upgrades[0].name));
-
   }
   update({ interval }) {
     this.getTotalRate();
@@ -116,7 +123,10 @@ export class DataService {
     this.data = JSON.stringify({
       generators: [...this.generators],
       current: this.current,
-      total: this.total
+      total: this.total,
+      currentExotic: this.currentExotic,
+      currentVoid: this.currentVoid,
+      startTime: this.startTime
     });
     localStorage.setItem(storageKey, this.data);
     // console.log('Saving.. ');
@@ -126,6 +136,25 @@ export class DataService {
       rate += gen.getTotalRate();
       return rate;
     }, 0);
+    this.rate *= Math.max(1, this.exoticProd);
+    this.rate *= Math.max(1, this.voidProd);
     return this.rate;
+  }
+  exoticPrestige() {
+    const current = this.current;
+    const exotic = this.prestigeService.calcExotic(current);
+    this.currentExotic += exotic;
+    this.initialize({});
+    this.exoticProd = this.prestigeService.calcExoticProd(this.currentExotic);
+    this.earnableVoid = this.prestigeService.calcVoid(this.currentExotic);
+  }
+  voidPrestige() {
+    const current = this.current;
+    const voidParticles = this.prestigeService.calcVoid(this.currentExotic);
+    this.currentVoid += voidParticles;
+    this.initialize({});
+    this.currentExotic = 0;
+    this.exoticProd = this.prestigeService.calcExoticProd(this.currentExotic);
+    this.voidProd = 1 + this.currentVoid * 0.01;
   }
 }

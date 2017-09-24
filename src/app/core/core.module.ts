@@ -1,7 +1,9 @@
-import { DataService } from './data.service';
-import { UpdateService } from './update.service';
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+
+import { DataService } from './data.service';
+import { PrestigeService } from './prestige.service';
+import { UpdateService } from './update.service';
 
 @NgModule({
   imports: [
@@ -10,7 +12,8 @@ import { CommonModule } from '@angular/common';
   declarations: [],
   providers: [
     UpdateService,
-    DataService
+    DataService,
+    PrestigeService
   ]
 })
 export class CoreModule { }
