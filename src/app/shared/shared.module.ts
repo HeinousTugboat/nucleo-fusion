@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { DelayPipe } from './delay.pipe';
 import { ScorecardComponent } from './scorecard/scorecard.component';
 import { TruncPipe } from './trunc.pipe';
+import { SwitchComponent } from './switch/switch.component';
 
 @NgModule({
   imports: [
@@ -14,8 +15,9 @@ import { TruncPipe } from './trunc.pipe';
     FormsModule,
     TruncPipe,
     DelayPipe,
-    ScorecardComponent
+    ScorecardComponent,
+    SwitchComponent
 ],
-  declarations: [DelayPipe, ScorecardComponent, TruncPipe]
+  declarations: [DelayPipe, ScorecardComponent, TruncPipe, SwitchComponent]
 })
 export class SharedModule { }

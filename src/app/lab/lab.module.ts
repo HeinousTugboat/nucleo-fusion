@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
+import { SharedModule } from '../shared/shared.module';
 import { LabSettingsComponent } from './lab-settings/lab-settings.component';
 import { UpdateListComponent } from './update-list/update-list.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    SharedModule
   ],
   declarations: [LabSettingsComponent, UpdateListComponent]
 })

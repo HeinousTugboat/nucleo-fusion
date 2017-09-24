@@ -1,0 +1,73 @@
+.switch {
+  display: none;
+}
+
+.switch+.switch-button {
+  /* outline: 0; */
+  /* display: block; */
+  display: inline-flex;
+  width: 60px;
+  height: 15px;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin: 4px 8px;
+}
+
+.switch+.switch-button:after,
+.switch+.switch-button:before {
+  box-sizing: border-box;
+  position: relative;
+  display: block;
+  content: "";
+  width: 50%;
+  height: 100%;
+}
+
+.switch+.switch-button:after {
+  left: 0;
+}
+
+.switch+.switch-button:before {
+  display: none;
+}
+
+.switch:checked+.switch-button:after {
+  left: 50%;
+}
+
+.switch+.switch-button {
+  padding: 2px;
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  background: #eee;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.switch+.switch-button:after {
+  -webkit-transition: all .2s ease;
+  transition: all .2s ease;
+  background: #fafafa;
+  content: "";
+  border-radius: 4px;
+  border: 1px solid #999;
+}
+
+:host:hover .switch+.switch-button {
+  border: 1px solid #333;
+}
+
+.switch:checked+.switch-button {
+  border: 1px solid #777;
+  /* border: 1px solid #039be5; */
+}
+
+.switch:checked+.switch-button:after {
+  left: 50%;
+  border: 1px solid #039be5;
+  background: #CFD8DC;
+}

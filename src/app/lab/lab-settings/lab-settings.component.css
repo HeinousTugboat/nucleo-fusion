@@ -13,7 +13,7 @@ button[disabled] {
     color: #999;
 }
 
-button:hover {
+button:hover, #options > div:hover {
     border: 1px solid #777;
     color: #039be5;
     background-color: #CFD8DC;
@@ -26,4 +26,27 @@ button[disabled]:hover {
 }
 section {
     margin: 10px;
+}
+
+#options {
+    display: flex;
+}
+
+#options > * {
+    margin: 4px;
+}
+
+#options > div {
+    font-size: 13.333px;
+    border: 1px solid transparent;
+    /* padding: 0 8px; */
+    background-color: #eee;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#options > div > span {
+    padding: 4px 8px 4px;
 }
