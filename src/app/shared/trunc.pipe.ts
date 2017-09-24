@@ -6,7 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TruncPipe implements PipeTransform {
 
   transform(value: number, acc: number = 3): any {
-    return value.toPrecision(acc + 1);
+    if (value < Math.pow(10, acc)) {
+      return Math.floor(value);
+    } else {
+      return value.toPrecision(acc + 1);
+    }
   }
 
 }
