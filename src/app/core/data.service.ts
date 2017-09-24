@@ -48,7 +48,7 @@ export class DataService {
     this.save();
     this.generators = [...Array.from(ParticleGenerator.list.values())];
     this.upgrades = [...Array.from(Upgrade.list.values())];
-    this.upgrades.sort((a, b) => b.getCost() - a.getCost());
+    this.upgrades.sort((a, b) => a.getCost() - b.getCost());
     this.slush = [...Array.from(ParticleGenerator.list.values()), ...Array.from(Upgrade.list.values())];
     // console.log(this.slush);
     // console.log(this.generators);
