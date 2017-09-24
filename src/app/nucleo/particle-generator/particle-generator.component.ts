@@ -9,6 +9,8 @@ import { ParticleGenerator } from '../../models/particle-generator.model';
 })
 export class ParticleGeneratorComponent implements OnInit {
   @Input() gen: ParticleGenerator;
+  @Input() element = 'N';
+  @Input() script = '0';
 
   constructor(public dataService: DataService) { }
 

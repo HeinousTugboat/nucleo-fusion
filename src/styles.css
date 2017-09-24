@@ -33,3 +33,11 @@ p {
     margin: 0;
     padding: 0;
 }
+
+sup {
+    font-weight: 700;
+    font-size: 58%;
+    vertical-align: super;
+    line-height: 0;
+    position: relative;
+}

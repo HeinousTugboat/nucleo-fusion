@@ -2,8 +2,8 @@
   <div class="label">{{gen.name}}</div>
   <div class="tag">
       <div class="info">
-          <p class="cost">{{gen.getNextCost() | trunc}}</p>
-          <p class="data"><span class="individual-rate">{{gen.getBaseRate() | trunc}}/s</span> - <span class="total-rate">{{gen.getTotalRate() | trunc}}/s</span></p>
+          <p class="cost">{{gen.getNextCost() | trunc}} <sup *ngIf="script">{{script}}</sup>{{element}}</p>
+          <p class="data"><span class="individual-rate">{{gen.getBaseRate() | trunc}} <sup *ngIf="script">{{script}}</sup>{{element}}/s</span> - <span class="total-rate">{{gen.getTotalRate() | trunc}} <sup *ngIf="script">{{script}}</sup>{{element}}/s</span></p>
       </div>
       <ng-container *ngIf="gen.num;then buyButton else newButton">
       </ng-container>

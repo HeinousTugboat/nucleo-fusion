@@ -9,8 +9,9 @@
         <div class="current-rate">{{dataService.rate | trunc}} <sup>0</sup>N/s</div>
         <ul class="isotopes">
             <li>
-                <div>num</div>
+                <div><sup>0</sup>N</div>
                 <div>{{dataService.current | trunc}}</div>
+                <div>100.0000%</div>
             </li>
             <!-- <li *ngIf="dataService.efficient">
                 <div>eff</div>
@@ -20,8 +21,8 @@
     </div>
 </header>
 <app-particle-generator-panel [gens]="dataService.generators" [hidden]="activePanel !== 'generator'"></app-particle-generator-panel>
-<app-upgrade-panel [upgs]="dataService.upgrades"></app-upgrade-panel>
-<!-- <upgrade-panel [upgs]="dataService.upgrades" [hidden]="activePanel !== 'upgrade'"></upgrade-panel> -->
+<!-- <app-upgrade-panel [upgs]="dataService.upgrades"></app-upgrade-panel> -->
+<app-upgrade-panel [upgs]="dataService.upgrades" [hidden]="activePanel !== 'upgrade'"></app-upgrade-panel>
 <section class="prestige"></section>
 <footer>
     <div class="generators-link"

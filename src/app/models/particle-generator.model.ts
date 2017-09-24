@@ -1,4 +1,4 @@
-import { Upgrade, BasicUpgrade, BoostUpgrade, SynergyUpgrade, UpgradeType } from './upgrade.model';
+import { Upgrade, UpgradeType } from './upgrade.model';
 import { Dependency, Purchasable } from './resource.interface';
 
 export function isGen(g: ParticleGenerator | Upgrade | Purchasable | Dependency): g is ParticleGenerator {

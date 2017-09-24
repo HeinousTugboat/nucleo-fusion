@@ -8,8 +8,12 @@
     <div>{{dataService.total | trunc}}</div>
   </li>
   <li>
-    <div class="label">Time:</div>
+    <div class="label">Update Time:</div>
     <div>{{getElapsed()}}</div>
+  </li>
+  <li>
+    <div class="label">Data Time:</div>
+    <div>{{getElapsed(dataService.startTime)}}</div>
   </li>
   <li>
     <div class="label">Next Best:</div>
