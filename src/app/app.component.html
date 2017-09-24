@@ -4,11 +4,12 @@
       <h1>{{title}}</h1>
       <div>{{version}}</div>
     </header>
-    <div id="global-resources"></div>
-    <app-scorecard></app-scorecard>
+    <div id="global-resources">
+      <app-scorecard></app-scorecard>
+    </div>
     <nav id="sidebar-links">
-      <a id="dashboard-link" routerLink="/">Dashboard</a>
-      <a id="lab-link" routerLink="/lab">Lab</a>
+      <a id="dashboard-link" routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+      <a id="lab-link" routerLink="/lab" routerLinkActive="active">Lab</a>
       <!-- <div id="options-link">Options</div> -->
     </nav>
   </div>
