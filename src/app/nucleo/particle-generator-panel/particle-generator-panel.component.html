@@ -1,4 +1,4 @@
-<ul class="new">
+<ul class="particle-generator-list">
   <ng-container *ngFor="let gen of gens; let i=index;">
       <app-particle-generator *ngIf="gen.checkAvailable()" [gen]="gen"></app-particle-generator>
   </ng-container>

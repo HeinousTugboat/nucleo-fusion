@@ -1,0 +1,56 @@
+.generator {
+    display: flex;
+    margin: 0 2px 2px;
+    align-items: center;
+}
+
+.generator[disabled] * {
+        color: #999;
+        background: #EEE;
+        border-color: #CCC;
+}
+
+.generator .label {
+    margin: 0px 0 0px 2px;
+    border: 1px solid #CCC;
+    border-right: 0;
+    width: 50px;
+    border-radius: 5px 0 0 5px;
+    font-size: 30px;
+    text-align: center;
+    align-self: center;
+}
+
+.generator .tag {
+    display: flex;
+    border: 1px solid #999;
+    flex: 1 1 auto;
+}
+
+.generator .info {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    margin: 5px;
+    justify-content: space-between;
+}
+
+.generator .info .cost {
+    font-size: 18px;
+}
+
+.generator .data {
+    font-size: 12px;
+}
+
+.number {
+    background: unset;
+    border: 0px solid transparent;
+    font-size: 24px;
+    align-self: center;
+    padding: 5px;
+    border-left: 1px solid #777;
+    flex: 0 0 42px;
+    text-align: center;
+    font-family: inherit;
+}

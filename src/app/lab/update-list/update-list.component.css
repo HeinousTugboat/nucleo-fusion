@@ -1,0 +1,18 @@
+ul {
+    display: flex;
+    flex-flow: column wrap;
+    max-height: 80vh;
+    font-size: 75%;
+}
+li {
+    min-width: 100px;
+    padding: 2px;
+}
+.bought {
+    color: #F9F9F9;
+    text-shadow: 0px 0px 2px #FFF;
+}
+.unavail {
+    color: #777;
+    text-shadow: 0px 0px 2px #777;
+}

@@ -1,0 +1,118 @@
+:host {
+  margin: 10px 10px 20px;
+  border: 1px solid #333;
+  color: #333;
+  min-width: 300px;
+  /* min-height: 120px; */
+  min-height: 250px;
+  position: relative;
+  flex: 0 0 auto;
+  /* background: #FAFAFA; */
+  background: white;
+}
+
+header {
+  display: flex;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 5px;
+  background: #EEE;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+header .info {
+  flex: 0 0 auto;
+}
+
+header .symbol {
+  text-align: center;
+  border: 2px solid #333;
+  margin: -1px 5px 5px -1px;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background: white;
+}
+
+header .symbol h2 {
+  font-size: 60px;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: relative;
+  font-family: 'Source Sans Pro';
+}
+
+header .symbol span {
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+header .amounts {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  margin: 5px;
+}
+
+header .current-rate {
+  text-align: right;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+header .isotopes {
+  padding: 4px;
+  margin: 0;
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+header .isotopes li {
+  display: flex;
+  justify-content: space-between;
+}
+
+header .isotopes li>div {
+  flex: 0 0 auto;
+}
+
+footer {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  left: 0px;
+  display: flex;
+  justify-content: space-around;
+  font-weight: 500;
+  font-family: 'Vollkorn';
+  font-size: 12px;
+  border-top: 1px solid black;
+}
+
+footer div {
+  border: 1px solid #777;
+  border-top: 0px;
+  background: #DDD;
+  display: inline-block;
+  padding: 2px 20px;
+  /* z-index: -1; */
+  color: #999;
+  /* margin-top: -1px; */
+}
+
+footer .active-tab {
+  z-index: 10;
+  background: white;
+  border-color: #333;
+  color: #333;
+  border-top: 0px solid white;
+  margin-top: -1px;
+}

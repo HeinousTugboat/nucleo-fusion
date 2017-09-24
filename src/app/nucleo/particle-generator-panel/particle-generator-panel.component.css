@@ -1,0 +1,4 @@
+.particle-generator-list {
+    display: flex;
+    flex-direction: column;
+}

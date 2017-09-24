@@ -1,11 +1,18 @@
-<div id="scorecard">
-    <div>Tick #{{updateService.tick}}</div>
-    <div>Next Best: {{dataService.findBest().name}}</div>
-    <div *ngIf="dataService.efficient">Most Eff: {{dataService.efficient.name}}</div>
-    <div>Total: {{dataService.total | trunc}}</div>
-    <div>Time: {{getElapsed()}}</div>
-    <!-- <div>Total {{dataService.total | trunc}}</div> -->
-    <!-- <div *ngIf="dataService.efficient">Eff {{dataService.efficient.name}} -- {{dataService.efficient.efficiency}} -->
-    <!-- <div>Current {{dataService.current | trunc}}</div> -->
-    <!-- <div>{{dataService.rate}}/sec</div> -->
-</div>
+<ul id="scorecard">
+  <li>
+    <div class="label">Tick</div>
+    <div>#{{updateService.tick}}</div>
+  </li>
+  <li>
+    <div class="label">Total Gen:</div>
+    <div>{{dataService.total | trunc}}</div>
+  </li>
+  <li>
+    <div class="label">Time:</div>
+    <div>{{getElapsed()}}</div>
+  </li>
+  <li>
+    <div class="label">Next Best:</div>
+    <div>{{dataService.findBest().name}}</div>
+  </li>
+</ul>

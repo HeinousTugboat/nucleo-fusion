@@ -1,0 +1,82 @@
+/* TODO: Convert #sidebar into component.. */
+#sidebar-nav {
+    background: #333;
+    color: #FAFAFA;
+    border-right: 1px solid #222;
+    flex: 0 0 auto;
+    min-width: 230px;
+}
+
+#sidebar-wrapper {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    flex: 0 0 auto;
+}
+
+#sidebar-wrapper > :first-child {
+    margin-top: 15px;
+}
+
+#sidebar-wrapper > :last-child {
+    margin-bottom: 15px;
+}
+
+#sidebar-wrapper > header {
+    border-bottom: 1px solid #CCC;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#sidebar-wrapper > header > h1 {
+    font-size: 24px;
+}
+
+#sidebar-wrapper > header > div {
+    font-size: 14px;
+    color: #CCC;
+    margin-bottom: 10px;
+    margin-top: -5px;
+}
+
+#global-resources {
+    border-bottom: 1px solid #CCC;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    flex: 1 1 auto;
+}
+
+nav#sidebar-links > * {
+    display: block;
+    margin: 0px -16px;
+    padding: 2px 16px;
+    border: 1px solid transparent;
+    border-left: 0px;
+    border-right: 0px;
+    transition: all 500ms ease-in-out;
+    font-family: 'Vollkorn';
+    font-weight: 500;
+}
+
+nav#sidebar-links >*:hover {
+    border-color: #777;
+    background: #444;
+    box-shadow: inset -60px 0px 30px -30px #AAA;
+    color: #FAFAFA;
+}
+
+nav#sidebar-links .active,
+nav#sidebar-links >*:target {
+    border-color: #EEE;
+    background: #AAA;
+    color: #333;
+}
+
+main {
+    position: relative;
+    min-height: 100vh;
+    z-index: 1;
+}

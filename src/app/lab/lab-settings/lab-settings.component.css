@@ -1,0 +1,29 @@
+button {
+    border: 1px solid transparent;
+    padding: 4px 8px;
+    text-decoration: none;
+    margin-top: 0px;
+    display: inline-block;
+    background-color: #eee;
+    border-radius: 4px;
+}
+
+button[disabled] {
+    background-color: #fff;
+    color: #999;
+}
+
+button:hover {
+    border: 1px solid #777;
+    color: #039be5;
+    background-color: #CFD8DC;
+}
+
+button[disabled]:hover {
+    border: 1px solid #999;
+    color: #999;
+    background-color: #fff;
+}
+section {
+    margin: 10px;
+}

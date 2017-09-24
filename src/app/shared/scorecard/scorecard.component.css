@@ -1,0 +1,14 @@
+li {
+    display: flex;
+    justify-content: space-between;
+}
+
+li > div {
+    margin: 2px;
+    flex: 0 0 auto;
+}
+
+.label {
+    font-size: 14px;
+    color: #CCC;
+}
