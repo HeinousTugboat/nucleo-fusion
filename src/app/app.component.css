@@ -4,11 +4,12 @@
     color: #FAFAFA;
     border-right: 1px solid #222;
     flex: 0 0 auto;
-    min-width: 230px;
+    /* min-width: 230px; */
 }
 
 #sidebar-wrapper {
-    height: 100vh;
+    /* height: 100vh; */
+    height: 100%;
     position: sticky;
     top: 0;
     padding: 0 15px;
@@ -77,6 +78,6 @@ nav#sidebar-links >*:target {
 
 main {
     position: relative;
-    min-height: 100vh;
+    /* min-height: 100vh; */
     z-index: 1;
 }
